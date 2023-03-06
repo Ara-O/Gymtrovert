@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Gymtrovert</string>
+    <string name="welcome_text">Welcome! 💪🏋️️‍</string>
+    <string name="welcome_intro">Are you fed up with spending countless minutes waiting for gym equipment to become available due an overcrowded gym?</string>
+    <string name="get_started_text">Get Started 🤓️‍</string>
+    <string name="username_text">Username:</string>
+    <string name="email_text">Email Address:</string>
+    <string name="password_text">Password:</string>
+    <string name="i_already_have_an_account_text"><u>I already have an account</u></string>
+    <string name="sign_me_up_text">Sign me up</string>
+    <string name="enter_password_here_text">Enter password here</string>
+    <string name="enter_email_here_text">Enter email here</string>
+    <string name="enter_username_here_text">Enter username here</string>
+
+</resources>
