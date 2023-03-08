@@ -20,5 +20,8 @@
     <string name="log_data_text">Log Data</string>
     <string name="down_arrow">Down arrow</string>
     <string name="up_arrow">Up Arrow</string>
+    <string name="recently_tracked">Recently Tracked</string>
+    <string name="min">min</string>
+    <string name="h">h</string>
 
 </resources>
