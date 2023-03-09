@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gymtrovert.databinding.ActivitySignupBinding
+import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -16,63 +17,88 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.google.firebase.FirebaseError
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.ktx.initialize
 
 
 class Signup : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
     private lateinit var auth: FirebaseAuth
     lateinit var googleSignInClient: GoogleSignInClient
-    private lateinit var oneTapClient: SignInClient
-    private lateinit var signInRequest: BeginSignInRequest
     lateinit var btSignIn: SignInButton
-    private val REQ_ONE_TAP = 2
-    private var showOneTapUI = true
-    private lateinit var firebaseAuth: FirebaseAuth
-    private val TAG ="AAAAAAAA"
-    override fun onCreate(savedInstanceState: Bundle?) {
+     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = Firebase.auth
-        Firebase.auth.signOut()
-//        Check for current user
 
-        val sharedPreferences = getSharedPreferences("RegistrationPrefs", MODE_PRIVATE)
-        val isUserLoggedIn = sharedPreferences.getBoolean("isUserLoggedIn", false)
+         //Check if user exists
+         auth = Firebase.auth
 
-        if (isUserLoggedIn) {
-            // User is signed in, do something here
-            Log.d("wevwv" ,"user signed in!")
-        } else {
-            // User is not signed in, do something else here
-            Log.d("wevwv" ,"user no signed in!")
-        }
+         val authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
+             val user = firebaseAuth.currentUser
+             if (user != null) {
+                 // User is signed in
+                 val i = Intent(this, MainActivity::class.java)
+                 startActivity(i)
+                 finish()
+             } else {
+                 Log.d("auth listener did not find user", "sad")
+             }
+         }
 
-//        val username = binding.usernameInput.text
-//        val email = binding.emailAddressInput.text
-//        val password = binding.passwordInput.text
-        btSignIn = binding.btSignIn
+         auth.addAuthStateListener(authListener)
+
+
+         btSignIn = binding.btSignIn
 
         val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(BuildConfig.FIREBASE_ID_TOKEN)
             .requestEmail()
             .build()
-//
-//        // Initialize sign in client
+
+        // Initialize sign in client
         googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions)
         btSignIn.setOnClickListener { // Initialize sign in intent
             val intent: Intent = googleSignInClient.signInIntent
             // Start activity for result
             startActivityForResult(intent, 100)
         }
-        firebaseAuth = FirebaseAuth.getInstance()
 
+
+         binding.signupButton.setOnClickListener {
+             val username = binding.usernameInput.text
+             val emailAddress = binding.emailAddressInput.text
+             val password = binding.passwordInput.text
+
+             if(emailAddress.isNotEmpty() && password.isNotEmpty()){
+                 auth.createUserWithEmailAndPassword(emailAddress.toString(), password.toString())
+                     .addOnCompleteListener(this) { task ->
+                         if (task.isSuccessful) {
+                             // Sign in success, update UI with the signed-in user's information
+                             Log.d("Success", "createUserWithEmail:success")
+                             displayToast("Successfully signed in")
+                             val user = auth.currentUser
+                         } else {
+                             // If sign in fails, display a message to the user.
+                             Log.w("Failure", "createUserWithEmail:failure", task.exception)
+                             displayToast("Authentication Failed: ${task.exception?.message.toString()}")
+                         }
+                     }
+             }else{
+                 displayToast("Some fields may be missing, please try again")
+             }
+         }
+
+         binding.alreadyHasAccount.setOnClickListener {
+             val i = Intent(this, Login::class.java)
+             startActivity(i)
+         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -84,39 +110,23 @@ class Signup : AppCompatActivity() {
 
                 // check condition
                 if (signInAccountTask.isSuccessful) {
-                    // When google sign in successful initialize string
-                    val s = "Google sign in successful"
-                    // Display Toast
-                    displayToast(s)
-                    // Initialize sign in account
                     try {
                         // Initialize sign in account
                         val googleSignInAccount =
                             signInAccountTask.getResult(ApiException::class.java)
-                        // Check condition
+
                         if (googleSignInAccount != null) {
-                            // When sign in account is not equal to null initialize auth credential
+
                             val authCredential: AuthCredential = GoogleAuthProvider.getCredential(
                                 googleSignInAccount.idToken, null
                             )
-                            // Check credential
-                            firebaseAuth.signInWithCredential(authCredential)
+                            // Gets credential from google sign in and uses the credential to sign in to firebase
+                            auth.signInWithCredential(authCredential)
                                 .addOnCompleteListener(this) { task ->
                                     // Check condition
                                     if (task.isSuccessful) {
-                                        val sharedPreferences =
-                                            getSharedPreferences("RegistrationPrefs", Context.MODE_PRIVATE)
-                                        val editor = sharedPreferences.edit()
-                                        editor.putBoolean("isUserLoggedIn", true)
-                                        editor.apply()
-                                        Log.d(
-                                            "i hope",
-                                            googleSignInAccount.idToken.toString() + " " + googleSignInAccount.email.toString()
-                                        )
-
                                         // When task is successful redirect to profile activity
-
-                                        displayToast("Firebase authentication successful")
+                                        displayToast("Authentication successful ${auth.currentUser?.uid}")
                                     } else {
                                         // When task is unsuccessful display Toast
                                         displayToast(

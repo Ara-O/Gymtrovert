@@ -23,5 +23,8 @@
     <string name="recently_tracked">Recently Tracked</string>
     <string name="min">min</string>
     <string name="h">h</string>
+    <string name="welcome_back">Welcome Back! 💪</string>
+    <string name="log_in">Log In</string>
+    <string name="i_don_t_have_an_account"><u>I don\'t have an account</u></string>
 
 </resources>
