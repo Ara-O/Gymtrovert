@@ -10,31 +10,39 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var  authListener: AuthStateListener
 
+    override fun onDestroy() {
+        super.onDestroy()
+        Firebase.auth.removeAuthStateListener(authListener)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
+        authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
             val user = firebaseAuth.currentUser
             if (user != null) {
-               Log.d("yay", "a user already exists")
+                // User is signed in
+                Log.d("vewfwe", "user already exists")
+
             } else {
-                Log.d("auth listener did not find user", "sad")
                 val i = Intent(this, Signup::class.java)
                 startActivity(i)
                 finish()
             }
         }
 
-        Firebase.auth.addAuthStateListener(authListener)
+        Firebase. auth.addAuthStateListener(authListener)
+
 
         val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(BuildConfig.FIREBASE_ID_TOKEN)

@@ -40,19 +40,6 @@ class Signup : AppCompatActivity() {
          //Check if user exists
          auth = Firebase.auth
 
-         val authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-             val user = firebaseAuth.currentUser
-             if (user != null) {
-                 // User is signed in
-                 val i = Intent(this, MainActivity::class.java)
-                 startActivity(i)
-                 finish()
-             } else {
-                 Log.d("auth listener did not find user", "sad")
-             }
-         }
-
-         auth.addAuthStateListener(authListener)
 
 
          btSignIn = binding.btSignIn
@@ -84,6 +71,9 @@ class Signup : AppCompatActivity() {
                              Log.d("Success", "createUserWithEmail:success")
                              displayToast("Successfully signed in")
                              val user = auth.currentUser
+                             val i = Intent(this, MainActivity::class.java)
+                             startActivity(i)
+                             finish()
                          } else {
                              // If sign in fails, display a message to the user.
                              Log.w("Failure", "createUserWithEmail:failure", task.exception)
@@ -125,8 +115,12 @@ class Signup : AppCompatActivity() {
                                 .addOnCompleteListener(this) { task ->
                                     // Check condition
                                     if (task.isSuccessful) {
+                                        val i = Intent(this, MainActivity::class.java)
+                                        startActivity(i)
+                                        finish()
                                         // When task is successful redirect to profile activity
                                         displayToast("Authentication successful ${auth.currentUser?.uid}")
+
                                     } else {
                                         // When task is unsuccessful display Toast
                                         displayToast(

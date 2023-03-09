@@ -150,27 +150,35 @@
             android:textColor="#404040"
             android:textSize="12sp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/signupButton"
-            android:layout_width="131dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30sp"
-            android:background="@drawable/rounded_button_border"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/sign_me_up_text"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:layout_marginTop="10dp"
+            android:gravity="start|top|left"
+            android:orientation="horizontal">
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/bt_sign_in"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="-5dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/signupButton"
+                android:layout_width="131dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_button_border"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/sign_me_up_text"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/bt_sign_in"
+                android:layout_width="147dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 
