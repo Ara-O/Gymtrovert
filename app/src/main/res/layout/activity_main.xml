@@ -44,8 +44,8 @@
             android:id="@+id/imageView2"
             android:layout_width="388dp"
             android:layout_height="507dp"
-            android:layout_marginStart="132dp"
-            android:layout_marginTop="152dp"
+            android:layout_marginStart="128dp"
+            android:layout_marginTop="332dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@mipmap/gradient_circle_foreground" />
@@ -126,7 +126,7 @@
             app:layout_constraintTop_toTopOf="@+id/view" />
 
         <EditText
-            android:id="@+id/textView17"
+            android:id="@+id/loggedWeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -146,8 +146,8 @@
 
         <TextView
             android:id="@+id/lbs"
-            android:layout_width="44dp"
-            android:layout_height="60dp"
+            android:layout_width="71dp"
+            android:layout_height="52dp"
             android:layout_marginTop="54dp"
             android:fontFamily="@font/poppins_medium"
             android:text="lbs"
@@ -155,7 +155,7 @@
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="@+id/view3"
             app:layout_constraintHorizontal_bias="0.012"
-            app:layout_constraintStart_toEndOf="@+id/textView17"
+            app:layout_constraintStart_toEndOf="@+id/loggedWeight"
             app:layout_constraintTop_toTopOf="@+id/view3" />
 
         <TextView
@@ -205,19 +205,19 @@
             android:id="@+id/hour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="96dp"
+            android:layout_marginStart="84dp"
             android:backgroundTint="#FFFFFF"
             android:fontFamily="@font/poppins_semibold"
-            android:textCursorDrawable="@color/white"
             android:inputType="number"
-            android:text="0"
             android:maxLength="2"
+            android:text="0"
             android:textColor="#FFFFFF"
+            android:textCursorDrawable="@color/white"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="@+id/view2"
             app:layout_constraintStart_toStartOf="@+id/view2"
             app:layout_constraintTop_toTopOf="@+id/view2"
-            app:layout_constraintVertical_bias="0.544" />
+            app:layout_constraintVertical_bias="0.541" />
 
         <TextView
             android:id="@+id/textView14"
@@ -290,7 +290,7 @@
             android:text="@string/weight_today"
             android:textColor="#FFFFFF"
             android:textSize="13sp"
-            app:layout_constraintBottom_toTopOf="@+id/textView17"
+            app:layout_constraintBottom_toTopOf="@+id/loggedWeight"
             app:layout_constraintEnd_toEndOf="@+id/view3"
             app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toStartOf="@+id/view3"

@@ -32,16 +32,54 @@ class Signup : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     lateinit var googleSignInClient: GoogleSignInClient
     lateinit var btSignIn: SignInButton
-     override fun onCreate(savedInstanceState: Bundle?) {
+    private lateinit var authListener: FirebaseAuth.AuthStateListener
+     var userId = ""
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Firebase.auth.removeAuthStateListener(authListener)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Firebase.auth.removeAuthStateListener(authListener)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
+            val user = firebaseAuth.currentUser
+            userId = firebaseAuth.currentUser?.uid.toString()
+            if (user != null) {
+                // User is signed in
+                val i = Intent(this, MainActivity::class.java)
+                startActivity(i)
+                finish()
+            }
+        }
+
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+         //Check users registration status
+         authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
+             val user = firebaseAuth.currentUser
+             userId = firebaseAuth.currentUser?.uid.toString()
+             if (user != null) {
+                 // User is signed in
+                 val i = Intent(this, MainActivity::class.java)
+                 startActivity(i)
+                 finish()
+             }
+         }
+
+         Firebase.auth.addAuthStateListener(authListener)
 
          //Check if user exists
          auth = Firebase.auth
-
-
 
          btSignIn = binding.btSignIn
 
@@ -81,6 +119,8 @@ class Signup : AppCompatActivity() {
                              val i = Intent(this, MainActivity::class.java)
                              startActivity(i)
                              finish()
+                             overridePendingTransition(R.anim.slide_in_right,
+                                 R.anim.slide_out_left);
                          } else {
                              // If sign in fails, display a message to the user.
                              Log.w("Failure", "createUserWithEmail:failure", task.exception)
@@ -95,6 +135,9 @@ class Signup : AppCompatActivity() {
          binding.alreadyHasAccount.setOnClickListener {
              val i = Intent(this, Login::class.java)
              startActivity(i)
+             overridePendingTransition(
+                 R.anim.slide_in_right,
+                 R.anim.slide_out_left);
          }
     }
 
@@ -132,6 +175,8 @@ class Signup : AppCompatActivity() {
 
                                         val i = Intent(this, MainActivity::class.java)
                                         startActivity(i)
+                                        overridePendingTransition(R.anim.slide_in_right,
+                                            R.anim.slide_out_left);
                                         finish()
                                         // When task is successful redirect to profile activity
                                         displayToast("Authentication successful ${auth.currentUser?.uid}")

@@ -10,10 +10,11 @@
         android:id="@+id/imageView"
         android:layout_width="348dp"
         android:layout_height="379dp"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:layout_marginTop="532dp"
+        android:layout_marginEnd="192dp"
+        android:rotation="180"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/gradient_circle_foreground" />
 
     <TextView

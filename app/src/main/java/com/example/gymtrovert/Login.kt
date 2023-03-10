@@ -1,13 +1,15 @@
 package com.example.gymtrovert
 
+import android.R
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.gymtrovert.databinding.ActivityLoginBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+
 
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -20,6 +22,10 @@ class Login : AppCompatActivity() {
         binding.doesntHaveAccount.setOnClickListener {
             val i = Intent(this, Signup::class.java)
             startActivity(i)
+            finish()
+            overridePendingTransition(
+                com.example.gymtrovert.R.anim.slide_in_left,
+                com.example.gymtrovert.R.anim.slide_out_right);
         }
 
         val auth = Firebase.auth
@@ -44,5 +50,13 @@ class Login : AppCompatActivity() {
                 }
         }
 
+    }
+
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(
+            com.example.gymtrovert.R.anim.slide_in_left,
+            com.example.gymtrovert.R.anim.slide_out_right);
     }
 }
