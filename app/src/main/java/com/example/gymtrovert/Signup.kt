@@ -22,6 +22,7 @@ import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 
@@ -71,6 +72,12 @@ class Signup : AppCompatActivity() {
                              Log.d("Success", "createUserWithEmail:success")
                              displayToast("Successfully signed in")
                              val user = auth.currentUser
+
+                             //Save user's username
+                             val database = Firebase.database
+                             val userUsername = database.getReference("/${user?.uid}/username")
+
+                             userUsername.setValue(username.toString())
                              val i = Intent(this, MainActivity::class.java)
                              startActivity(i)
                              finish()
@@ -95,6 +102,7 @@ class Signup : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
             100 -> {
+                val username = binding.usernameInput.text
                 // When request code is equal to 100 initialize task
                 val signInAccountTask: Task<GoogleSignInAccount> =  GoogleSignIn.getSignedInAccountFromIntent(data)
 
@@ -115,6 +123,13 @@ class Signup : AppCompatActivity() {
                                 .addOnCompleteListener(this) { task ->
                                     // Check condition
                                     if (task.isSuccessful) {
+
+                                        //Save user's username
+                                        val database = Firebase.database
+                                        val userUsername = database.getReference("/${auth.currentUser?.uid}/username")
+
+                                        userUsername.setValue(username)
+
                                         val i = Intent(this, MainActivity::class.java)
                                         startActivity(i)
                                         finish()
