@@ -30,24 +30,15 @@ class MainActivity : AppCompatActivity(){
     lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var  authListener: AuthStateListener
     var userId = ""
-    override fun onDestroy() {
-        super.onDestroy()
-        Firebase.auth.removeAuthStateListener(authListener)
-    }
 
     override fun onPause() {
         super.onPause()
-        Firebase.auth.removeAuthStateListener(authListener)
         viewModel.updateLoggedData(binding.loggedWeight.text.toString().toInt(), binding.hour.text.toString().toInt(), binding.min.text.toString().toInt(), binding.numOfPeopleInTheGym.text.toString().toInt())
     }
 
     override fun onResume() {
         super.onResume()
-        authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-            val user = firebaseAuth.currentUser
-            userId = firebaseAuth.currentUser?.uid.toString()
 
-        }
         binding.loggedWeight.setText(viewModel.loggedWeight.toString())
         binding.min.setText(viewModel.loggedMins.toString())
         binding.hour.setText(viewModel.loggedHour.toString())
@@ -56,6 +47,7 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         //View model
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
@@ -63,20 +55,13 @@ class MainActivity : AppCompatActivity(){
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //Check users registration status
-        authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-            val user = firebaseAuth.currentUser
-            userId = firebaseAuth.currentUser?.uid.toString()
-            if (user != null) {
-                // User is signed in
-                Log.d("vewfwe", "user already exists")
+        val storedData = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
+        userId = storedData.getString("id", "").toString()
 
-            } else {
-                val i = Intent(this, Signup::class.java)
-                startActivity(i)
-                finish()
-            }
+        if(userId.isEmpty()){
+            val i = Intent(this, Signup::class.java)
+            startActivity(i)
         }
-
 
 
         var numOfPeopleInGym = 0
@@ -146,6 +131,12 @@ class MainActivity : AppCompatActivity(){
                 applicationContext,
                 GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
             ).signOut()
+
+            val edit = getSharedPreferences("sharedPreferences", MODE_PRIVATE).edit()
+            edit.remove("id")
+            edit.apply()
+
+
             val i = Intent(this, Signup::class.java)
             startActivity(i)
             finish()
@@ -154,11 +145,11 @@ class MainActivity : AppCompatActivity(){
 
     }
 
-    override fun onBackPressed() {
+//    override fun onBackPressed() {
 //        finish()
-        val a = Intent(Intent.ACTION_MAIN)
-        a.addCategory(Intent.CATEGORY_HOME)
-        a.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(a)
-    }
+//        val a = Intent(Intent.ACTION_MAIN)
+//        a.addCategory(Intent.CATEGORY_HOME)
+//        a.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+//        startActivity(a)
+//    }
 }

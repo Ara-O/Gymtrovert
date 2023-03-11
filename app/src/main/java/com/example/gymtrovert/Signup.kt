@@ -32,56 +32,29 @@ class Signup : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     lateinit var googleSignInClient: GoogleSignInClient
     lateinit var btSignIn: SignInButton
-    private lateinit var authListener: FirebaseAuth.AuthStateListener
-     var userId = ""
 
-    override fun onDestroy() {
-        super.onDestroy()
-        Firebase.auth.removeAuthStateListener(authListener)
-    }
 
-    override fun onPause() {
-        super.onPause()
-        Firebase.auth.removeAuthStateListener(authListener)
-    }
 
-    override fun onResume() {
-        super.onResume()
-        authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-            val user = firebaseAuth.currentUser
-            userId = firebaseAuth.currentUser?.uid.toString()
-            if (user != null) {
-                // User is signed in
-                val i = Intent(this, MainActivity::class.java)
-                startActivity(i)
-                finish()
-            }
-        }
-
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-         //Check users registration status
-         authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-             val user = firebaseAuth.currentUser
-             userId = firebaseAuth.currentUser?.uid.toString()
-             if (user != null) {
-                 // User is signed in
-                 val i = Intent(this, MainActivity::class.java)
-                 startActivity(i)
-                 finish()
-             }
-         }
+        //Get current user id if exists
+        val storedData = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
+        val sharedPreferencesId = storedData.getString("id", "")
 
-         Firebase.auth.addAuthStateListener(authListener)
+        if(sharedPreferencesId!!.isNotEmpty()){
+            val i = Intent(this, MainActivity::class.java)
+            startActivity(i)
+            finish()
+        }
+
 
          //Check if user exists
          auth = Firebase.auth
 
-         btSignIn = binding.btSignIn
+        btSignIn = binding.btSignIn
 
         val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(BuildConfig.FIREBASE_ID_TOKEN)
@@ -114,13 +87,19 @@ class Signup : AppCompatActivity() {
                              //Save user's username
                              val database = Firebase.database
                              val userUsername = database.getReference("/${user?.uid}/username")
-
                              userUsername.setValue(username.toString())
+
+                             //Store user id using sharedPreference
+                             val sharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
+                             val firebasePref = sharedPreferences.edit()
+                             firebasePref.putString("id", user?.uid.toString())
+                             firebasePref.apply()
+
                              val i = Intent(this, MainActivity::class.java)
                              startActivity(i)
-                             finish()
                              overridePendingTransition(R.anim.slide_in_right,
                                  R.anim.slide_out_left);
+                             finish()
                          } else {
                              // If sign in fails, display a message to the user.
                              Log.w("Failure", "createUserWithEmail:failure", task.exception)
@@ -137,7 +116,8 @@ class Signup : AppCompatActivity() {
              startActivity(i)
              overridePendingTransition(
                  R.anim.slide_in_right,
-                 R.anim.slide_out_left);
+                 R.anim.slide_out_left)
+             finish()
          }
     }
 
@@ -170,8 +150,15 @@ class Signup : AppCompatActivity() {
                                         //Save user's username
                                         val database = Firebase.database
                                         val userUsername = database.getReference("/${auth.currentUser?.uid}/username")
-
                                         userUsername.setValue(username)
+
+
+                                        //Store user id using sharedPreference
+                                        val sharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
+                                        val firebasePref = sharedPreferences.edit()
+                                        firebasePref.putString("id", auth.currentUser?.uid.toString())
+                                        firebasePref.apply()
+
 
                                         val i = Intent(this, MainActivity::class.java)
                                         startActivity(i)
