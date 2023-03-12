@@ -34,25 +34,25 @@
                 app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
 
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="388dp"
-                android:layout_height="507dp"
-                android:layout_marginStart="128dp"
-                android:layout_marginTop="332dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@mipmap/gradient_circle_foreground" />
+<!--            <ImageView-->
+<!--                android:id="@+id/imageView2"-->
+<!--                android:layout_width="388dp"-->
+<!--                android:layout_height="507dp"-->
+<!--                android:layout_marginStart="128dp"-->
+<!--                android:layout_marginTop="332dp"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:srcCompat="@mipmap/gradient_circle_foreground" />-->
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="140dp"
-                android:layout_height="134dp"
-                android:layout_marginLeft="-5sp"
-                android:layout_marginTop="-5sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@mipmap/gradient_circle_2_foreground" />
+<!--            <ImageView-->
+<!--                android:id="@+id/imageView3"-->
+<!--                android:layout_width="140dp"-->
+<!--                android:layout_height="134dp"-->
+<!--                android:layout_marginLeft="-5sp"-->
+<!--                android:layout_marginTop="-5sp"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:srcCompat="@mipmap/gradient_circle_2_foreground" />-->
 
             <View
                 android:id="@+id/view"
