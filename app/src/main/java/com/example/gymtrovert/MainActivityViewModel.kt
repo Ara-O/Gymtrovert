@@ -4,15 +4,17 @@ import androidx.lifecycle.ViewModel
 
 class MainActivityViewModel: ViewModel() {
 //    private var loggedWeight
-    var loggedWeight = 0
-    var loggedHour = 0
-    var loggedMins = 0
+    var loggedWeight = ""
+    var loggedHour = ""
+    var loggedMins = ""
     var numOfPeople = 0
 
-    fun updateLoggedData(newLoggedWeight: Int, newLoggedHour: Int, newLoggedMins: Int, newNumOfPeople: Int){
+    fun updateLoggedData(newLoggedWeight: String, newLoggedHour: String, newLoggedMins: String, newNumOfPeople: Int){
         loggedWeight = newLoggedWeight
         loggedHour = newLoggedHour
         loggedMins = newLoggedMins
         numOfPeople = newNumOfPeople
     }
+
+
 }

@@ -2,324 +2,372 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="bottom"
         tools:context=".MainActivity">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="276dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="60dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/main_motivation"
-            android:textColor="#000000"
-            android:textSize="26sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.34"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/poppins"
-            android:text="@string/how_many_people_text"
-            android:textColor="#000000"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.368"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="388dp"
-            android:layout_height="507dp"
-            android:layout_marginStart="128dp"
-            android:layout_marginTop="332dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/gradient_circle_foreground" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="140dp"
-            android:layout_height="134dp"
-            android:layout_marginLeft="-5sp"
-            android:layout_marginTop="-5sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/gradient_circle_2_foreground" />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="322dp"
-            android:layout_height="126dp"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/rounded_edges"
-            android:backgroundTint="#000000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-        <View
-            android:id="@+id/view2"
-            android:layout_width="322dp"
-            android:layout_height="126dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/rounded_edges"
-            android:backgroundTint="#552551"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
-
-        <View
-            android:id="@+id/view3"
-            android:layout_width="322dp"
-            android:layout_height="126dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/rounded_edges"
-            android:backgroundTint="#091710"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.505"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view2" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/logData"
-            android:layout_width="322dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="20dp"
-            android:textAllCaps="false"
-            android:background="@drawable/rounded_button_border"
-            android:backgroundTint="#000000"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/log_data_text"
-            android:textColor="#FFFFFF"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view3" />
-
-        <TextView
-            android:id="@+id/numOfPeopleInTheGym"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="0"
-            android:textColor="#FFFFFF"
-            android:textSize="34sp"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
-            app:layout_constraintEnd_toEndOf="@+id/view"
-            app:layout_constraintHorizontal_bias="0.446"
-            app:layout_constraintStart_toStartOf="@+id/view"
-            app:layout_constraintTop_toTopOf="@+id/view" />
-
-        <EditText
-            android:id="@+id/loggedWeight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppins_medium"
-            android:inputType="number"
-            android:maxLength="3"
-            android:text="400"
-            android:textCursorDrawable="@color/white"
-            android:textColor="#FFFFFF"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="@+id/view3"
-            app:layout_constraintEnd_toEndOf="@+id/view3"
-            app:layout_constraintHorizontal_bias="0.391"
-            app:layout_constraintStart_toStartOf="@+id/view3"
-            app:layout_constraintTop_toTopOf="@+id/view3"
-            app:layout_constraintVertical_bias="0.8" />
-
-        <TextView
-            android:id="@+id/lbs"
-            android:layout_width="71dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="54dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="lbs"
-            android:textColor="#FFFFFF"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="@+id/view3"
-            app:layout_constraintHorizontal_bias="0.012"
-            app:layout_constraintStart_toEndOf="@+id/loggedWeight"
-            app:layout_constraintTop_toTopOf="@+id/view3" />
-
-        <TextView
-            android:id="@+id/peopleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_light"
-            android:text="people"
-            android:textColor="#FFFFFF"
-            android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
-            app:layout_constraintEnd_toEndOf="@+id/view"
-            app:layout_constraintHorizontal_bias="0.062"
-            app:layout_constraintStart_toEndOf="@+id/numOfPeopleInTheGym"
-            app:layout_constraintTop_toTopOf="@+id/view"
-            app:layout_constraintVertical_bias="0.527" />
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/increaseNumOfPeople"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="79dp"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/up_arrow"
-            android:src="@mipmap/arrow_2_foreground"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
-            app:layout_constraintEnd_toStartOf="@+id/numOfPeopleInTheGym"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/view"
-            app:layout_constraintTop_toTopOf="@+id/view" />
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/reduceNumOfPeople"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/down_arrow"
-            android:rotation="180"
-            android:src="@mipmap/arrow_2_foreground"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
-            app:layout_constraintEnd_toEndOf="@+id/view"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/peopleText"
-            app:layout_constraintTop_toTopOf="@+id/view" />
-
-        <EditText
-            android:id="@+id/hour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="84dp"
-            android:backgroundTint="#FFFFFF"
-            android:fontFamily="@font/poppins_semibold"
-            android:inputType="number"
-            android:maxLength="2"
-            android:text="0"
-            android:textColor="#FFFFFF"
-            android:textCursorDrawable="@color/white"
-            android:textSize="34sp"
-            app:layout_constraintBottom_toBottomOf="@+id/view2"
-            app:layout_constraintStart_toStartOf="@+id/view2"
-            app:layout_constraintTop_toTopOf="@+id/view2"
-            app:layout_constraintVertical_bias="0.541" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text=":"
-            android:textColor="#FFFFFF"
-            android:textSize="34sp"
-            app:layout_constraintBottom_toBottomOf="@+id/view2"
-            app:layout_constraintStart_toEndOf="@+id/textView13"
-            app:layout_constraintTop_toTopOf="@+id/view2"
-            app:layout_constraintVertical_bias="0.529" />
-
-        <EditText
-            android:id="@+id/min"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:backgroundTint="#FFFFFF"
-            android:fontFamily="@font/poppins_semibold"
-            android:inputType="number"
-            android:textCursorDrawable="@color/white"
-            android:maxLength="2"
-            android:text="00"
-            android:textColor="#FFFFFF"
-            android:textSize="34sp"
-            app:layout_constraintBottom_toBottomOf="@+id/view2"
-            app:layout_constraintStart_toEndOf="@+id/textView14"
-            app:layout_constraintTop_toTopOf="@+id/view2"
-            app:layout_constraintVertical_bias="0.544" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/poppins_light"
-            android:text="@string/h"
-            android:textColor="#FFFFFF"
-            android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="@+id/view2"
-            app:layout_constraintStart_toEndOf="@+id/hour"
-            app:layout_constraintTop_toTopOf="@+id/view2"
-            app:layout_constraintVertical_bias="0.561" />
-
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:fontFamily="@font/poppins_light"
-            android:text="@string/min"
-            android:textColor="#FFFFFF"
-            android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="@+id/view2"
-            app:layout_constraintStart_toEndOf="@+id/min"
-            app:layout_constraintTop_toTopOf="@+id/view2"
-            app:layout_constraintVertical_bias="0.561" />
-        <!--        <LinearLayout-->
-        <!--            android:layout_width="match_parent"-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/welcomeText"-->
+        <!--            android:layout_width="276dp"-->
         <!--            android:layout_height="wrap_content"-->
-        <!--            android:orientation="vertical" />-->
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:text="@string/weight_today"
-            android:textColor="#FFFFFF"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toTopOf="@+id/loggedWeight"
-            app:layout_constraintEnd_toEndOf="@+id/view3"
-            app:layout_constraintHorizontal_bias="0.49"
-            app:layout_constraintStart_toStartOf="@+id/view3"
-            app:layout_constraintTop_toTopOf="@+id/view3"
-            app:layout_constraintVertical_bias="0.741" />
+        <!--            android:layout_marginTop="60dp"-->
+        <!--            android:fontFamily="@font/poppins_bold"-->
+        <!--            android:text="@string/main_motivation"-->
+        <!--            android:textColor="#000000"-->
+        <!--            android:textSize="26sp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.34"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/recently_tracked"
-            android:textColor="#000000"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.162"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logData" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/textView6"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:fontFamily="@font/poppins"-->
+        <!--            android:text="@string/how_many_people_text"-->
+        <!--            android:textColor="#000000"-->
+        <!--            android:textSize="13sp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.368"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/welcomeText" />-->
 
-        <Button
-            android:id="@+id/logOut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
-            android:text="Log out"
+
+        <!--        <ImageView-->
+        <!--            android:id="@+id/imageView2"-->
+        <!--            android:layout_width="388dp"-->
+        <!--            android:layout_height="507dp"-->
+        <!--            android:layout_marginStart="128dp"-->
+        <!--            android:layout_marginTop="332dp"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:srcCompat="@mipmap/gradient_circle_foreground" />-->
+
+        <!--        <ImageView-->
+        <!--            android:id="@+id/imageView3"-->
+        <!--            android:layout_width="140dp"-->
+        <!--            android:layout_height="134dp"-->
+        <!--            android:layout_marginLeft="-5sp"-->
+        <!--            android:layout_marginTop="-5sp"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:srcCompat="@mipmap/gradient_circle_2_foreground" />-->
+
+        <!--        <View-->
+        <!--            android:id="@+id/view"-->
+        <!--            android:layout_width="322dp"-->
+        <!--            android:layout_height="126dp"-->
+        <!--            android:layout_marginTop="28dp"-->
+        <!--            android:background="@drawable/rounded_edges"-->
+        <!--            android:backgroundTint="#000000"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/textView6" />-->
+
+        <!--        <View-->
+        <!--            android:id="@+id/view2"-->
+        <!--            android:layout_width="322dp"-->
+        <!--            android:layout_height="126dp"-->
+        <!--            android:layout_marginTop="20dp"-->
+        <!--            android:background="@drawable/rounded_edges"-->
+        <!--            android:backgroundTint="#552551"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/view" />-->
+
+        <!--        <View-->
+        <!--            android:id="@+id/view3"-->
+        <!--            android:layout_width="322dp"-->
+        <!--            android:layout_height="126dp"-->
+        <!--            android:layout_marginTop="20dp"-->
+        <!--            android:background="@drawable/rounded_edges"-->
+        <!--            android:backgroundTint="#091710"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.505"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/view2" />-->
+
+        <!--        <androidx.appcompat.widget.AppCompatButton-->
+        <!--            android:id="@+id/logData"-->
+        <!--            android:layout_width="322dp"-->
+        <!--            android:layout_height="48dp"-->
+        <!--            android:layout_marginTop="20dp"-->
+        <!--            android:textAllCaps="false"-->
+        <!--            android:background="@drawable/rounded_button_border"-->
+        <!--            android:backgroundTint="#000000"-->
+        <!--            android:fontFamily="@font/poppins_medium"-->
+        <!--            android:text="@string/log_data_text"-->
+        <!--            android:textColor="#FFFFFF"-->
+        <!--            android:textSize="12sp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.494"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/view3" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/numOfPeopleInTheGym"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:fontFamily="@font/poppins_semibold"-->
+        <!--            android:text="0"-->
+        <!--            android:textColor="#FFFFFF"-->
+        <!--            android:textSize="34sp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/view"-->
+        <!--            app:layout_constraintEnd_toEndOf="@+id/view"-->
+        <!--            app:layout_constraintHorizontal_bias="0.446"-->
+        <!--            app:layout_constraintStart_toStartOf="@+id/view"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/view" />-->
+
+        <!--        <EditText-->
+        <!--            android:id="@+id/loggedWeight"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:backgroundTint="@color/white"-->
+        <!--            android:fontFamily="@font/poppins_medium"-->
+        <!--            android:hint="00"-->
+        <!--            android:inputType="number"-->
+        <!--            android:maxLength="3"-->
+        <!--            android:text=""-->
+        <!--            android:textColor="#FFFFFF"-->
+        <!--            android:textColorHint="@color/white"-->
+        <!--            android:textCursorDrawable="@color/white"-->
+        <!--            android:textSize="30sp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/view3"-->
+        <!--            app:layout_constraintEnd_toEndOf="@+id/view3"-->
+        <!--            app:layout_constraintHorizontal_bias="0.391"-->
+        <!--            app:layout_constraintStart_toStartOf="@+id/view3"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/view3"-->
+        <!--            app:layout_constraintVertical_bias="0.8"-->
+        <!--            tools:text="0" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/lbs"-->
+        <!--            android:layout_width="71dp"-->
+        <!--            android:layout_height="52dp"-->
+        <!--            android:layout_marginTop="54dp"-->
+        <!--            android:fontFamily="@font/poppins_medium"-->
+        <!--            android:text="lbs"-->
+        <!--            android:textColor="#FFFFFF"-->
+        <!--            android:textSize="30sp"-->
+        <!--            app:layout_constraintEnd_toEndOf="@+id/view3"-->
+        <!--            app:layout_constraintHorizontal_bias="0.012"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/loggedWeight"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/view3" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/peopleText"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:fontFamily="@font/poppins_light"-->
+        <!--            android:text="people"-->
+        <!--            android:textColor="#FFFFFF"-->
+        <!--            android:textSize="11sp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/view"-->
+        <!--            app:layout_constraintEnd_toEndOf="@+id/view"-->
+        <!--            app:layout_constraintHorizontal_bias="0.062"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/numOfPeopleInTheGym"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/view"-->
+        <!--            app:layout_constraintVertical_bias="0.527" />-->
+
+        <!--        <androidx.appcompat.widget.AppCompatImageButton-->
+        <!--            android:id="@+id/increaseNumOfPeople"-->
+        <!--            android:layout_width="48dp"-->
+        <!--            android:layout_height="48dp"-->
+        <!--            android:layout_marginStart="79dp"-->
+        <!--            android:background="#00FFFFFF"-->
+        <!--            android:contentDescription="@string/up_arrow"-->
+        <!--            android:src="@mipmap/arrow_2_foreground"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/view"-->
+        <!--            app:layout_constraintEnd_toStartOf="@+id/numOfPeopleInTheGym"-->
+        <!--            app:layout_constraintHorizontal_bias="0.0"-->
+        <!--            app:layout_constraintStart_toStartOf="@+id/view"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/view" />-->
+
+        <!--        <androidx.appcompat.widget.AppCompatImageButton-->
+        <!--            android:id="@+id/reduceNumOfPeople"-->
+        <!--            android:layout_width="48dp"-->
+        <!--            android:layout_height="48dp"-->
+        <!--            android:background="#00FFFFFF"-->
+        <!--            android:contentDescription="@string/down_arrow"-->
+        <!--            android:rotation="180"-->
+        <!--            android:src="@mipmap/arrow_2_foreground"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/view"-->
+        <!--            app:layout_constraintEnd_toEndOf="@+id/view"-->
+        <!--            app:layout_constraintHorizontal_bias="0.0"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/peopleText"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/view" />-->
+
+        <!--        <EditText-->
+        <!--            android:id="@+id/hour"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="80dp"-->
+        <!--            android:backgroundTint="#FFFFFF"-->
+        <!--            android:fontFamily="@font/poppins_semibold"-->
+        <!--            android:hint="00"-->
+        <!--            android:inputType="number"-->
+        <!--            android:maxLength="2"-->
+        <!--            android:textColor="#FFFFFF"-->
+        <!--            android:textColorHint="@color/white"-->
+        <!--            android:textCursorDrawable="@color/white"-->
+        <!--            android:textSize="34sp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/view2"-->
+        <!--            app:layout_constraintStart_toStartOf="@+id/view2"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/view2"-->
+        <!--            app:layout_constraintVertical_bias="0.583" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/textView14"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="12dp"-->
+        <!--            android:fontFamily="@font/poppins_semibold"-->
+        <!--            android:text=":"-->
+        <!--            android:textColor="#FFFFFF"-->
+        <!--            android:textSize="34sp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/view2"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/textView13"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/view2"-->
+        <!--            app:layout_constraintVertical_bias="0.529" />-->
+
+        <!--        <EditText-->
+        <!--            android:id="@+id/min"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="8dp"-->
+        <!--            android:backgroundTint="#FFFFFF"-->
+        <!--            android:fontFamily="@font/poppins_semibold"-->
+        <!--            android:hint="00"-->
+        <!--            android:inputType="number"-->
+        <!--            android:maxLength="2"-->
+        <!--            android:textColor="#FFFFFF"-->
+        <!--            android:textColorHint="@color/white"-->
+        <!--            android:textCursorDrawable="@color/white"-->
+        <!--            android:textSize="34sp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/view2"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/textView14"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/view2"-->
+        <!--            app:layout_constraintVertical_bias="0.583" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/textView13"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="5dp"-->
+        <!--            android:fontFamily="@font/poppins_light"-->
+        <!--            android:text="@string/h"-->
+        <!--            android:textColor="#FFFFFF"-->
+        <!--            android:textSize="11sp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/view2"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/hour"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/view2"-->
+        <!--            app:layout_constraintVertical_bias="0.561" />-->
+
+        <!--        &lt;!&ndash;        <LinearLayout&ndash;&gt;-->
+        <!--        &lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+        <!--        &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--        &lt;!&ndash;            android:orientation="vertical" />&ndash;&gt;-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/textView16"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="5dp"-->
+        <!--            android:fontFamily="@font/poppins_light"-->
+        <!--            android:text="@string/min"-->
+        <!--            android:textColor="#FFFFFF"-->
+        <!--            android:textSize="11sp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/view2"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/min"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/view2"-->
+        <!--            app:layout_constraintVertical_bias="0.564" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/textView18"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:fontFamily="@font/poppins"-->
+        <!--            android:text="@string/weight_today"-->
+        <!--            android:textColor="#FFFFFF"-->
+        <!--            android:textSize="13sp"-->
+        <!--            app:layout_constraintBottom_toTopOf="@+id/loggedWeight"-->
+        <!--            app:layout_constraintEnd_toEndOf="@+id/view3"-->
+        <!--            app:layout_constraintHorizontal_bias="0.49"-->
+        <!--            app:layout_constraintStart_toStartOf="@+id/view3"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/view3"-->
+        <!--            app:layout_constraintVertical_bias="0.741" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/textView19"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="20dp"-->
+        <!--            android:fontFamily="@font/poppins_medium"-->
+        <!--            android:text="@string/recently_tracked"-->
+        <!--            android:textColor="#000000"-->
+        <!--            android:textSize="15sp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.162"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/logData" />-->
+
+        <!--        <Button-->
+        <!--            android:id="@+id/logOut"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="44dp"-->
+        <!--            android:text="Log out"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.153"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/textView19" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/timePMorAM"-->
+        <!--            android:layout_width="24dp"-->
+        <!--            android:layout_height="26dp"-->
+        <!--            android:ems="10"-->
+        <!--            android:fontFamily="sans-serif-medium"-->
+        <!--            android:inputType="textPersonName"-->
+        <!--            android:text="PM"-->
+        <!--            android:textColor="#FFFFFF"-->
+        <!--            android:textSize="14sp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/view2"-->
+        <!--            app:layout_constraintEnd_toEndOf="@+id/view2"-->
+        <!--            app:layout_constraintHorizontal_bias="0.588"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/textView16"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/view2"-->
+        <!--            app:layout_constraintVertical_bias="0.18" />-->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="914dp"
+            app:defaultNavHost="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.153"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/nav_graph" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav_view"
+            style="@style/Widget.MaterialComponents.BottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:labelVisibilityMode="unlabeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/menu_bottom_nav"
+            android:backgroundTint="@color/white"
+            app:itemIconTint="@color/menu_nav_item"
+            app:itemTextColor="@color/menu_nav_item"
+            tools:layout_editor_absoluteX="0dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

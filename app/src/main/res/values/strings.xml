@@ -11,7 +11,7 @@
     <string name="enter_password_here_text">Enter password here</string>
     <string name="enter_email_here_text">Enter email here</string>
     <string name="enter_username_here_text">Enter username here</string>
-    <string name="main_motivation">Let\'s Crush This Workout Ara 💪🏋️️</string>
+    <string name="main_motivation">Let\'s Crush This Workout 💪🏋️️</string>
     <string name="how_many_people_text"><u>How many people are at the gym right now?</u></string>
     <string name="four_peeps">4 people</string>
     <string name="time">4h : 30m</string>
@@ -26,5 +26,7 @@
     <string name="welcome_back">Welcome Back! 💪</string>
     <string name="log_in">Log In</string>
     <string name="i_don_t_have_an_account"><u>I don\'t have an account</u></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
