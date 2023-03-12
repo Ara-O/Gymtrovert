@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/searchHistoryFragment"
-        android:name="com.example.gymtrovert.SearchHistoryFragment"
+        android:name="com.example.gymtrovert.Fragments.SearchHistoryFragment"
         android:label="fragment_search_history"
         tools:layout="@layout/fragment_search_history" />
     <fragment
         android:id="@+id/visualizeDataFragment"
-        android:name="com.example.gymtrovert.VisualizeDataFragment"
+        android:name="com.example.gymtrovert.Fragments.VisualizeDataFragment"
         android:label="fragment_visualize_data"
         tools:layout="@layout/fragment_visualize_data" />
     <fragment
         android:id="@+id/userProfileFragment"
-        android:name="com.example.gymtrovert.UserProfileFragment"
+        android:name="com.example.gymtrovert.Fragments.UserProfileFragment"
         android:label="fragment_user_profile"
         tools:layout="@layout/fragment_user_profile" />
     <fragment
