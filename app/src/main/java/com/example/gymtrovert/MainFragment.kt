@@ -177,7 +177,7 @@ class MainFragment : Fragment() {
                 val formattedDate = formatter.format(Calendar.getInstance().time)
                 val formattedTime = "$loggedHour:$loggedMinute $loggedMeridian"
 
-                val userLoggedData = database.getReference("/${userId}/${formattedDate}/${formattedTime}")
+                val userLoggedData = database.getReference("/${userId}/gymLogs/${formattedDate}")
                 userLoggedData.push().setValue(LoggedData(numOfPeopleInGym, formattedTime, loggedWeight))
                 Toast.makeText(context, "Data logged", Toast.LENGTH_SHORT).show()
             }
