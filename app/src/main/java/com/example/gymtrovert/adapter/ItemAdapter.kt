@@ -1,20 +1,21 @@
 package com.example.gymtrovert.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gymtrovert.LoggedData
 import com.example.gymtrovert.R
 
-class SearchHistoryItem{
-    val numOfPeopleInGym: Int = 0
-}
 
-class ItemAdapter(private val context: Context, private val dataset: List<SearchHistoryItem>) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+class ItemAdapter(private val context: Context, private val dataset: MutableList<LoggedData>) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(R.id.searchHistoryTextviewItem)
+        val loggedTimeTextView: TextView = view.findViewById(R.id.loggedTimeTextView)
+        val loggedWeightTextView: TextView = view.findViewById(R.id.loggedWeightTextView)
+        val numOfGymGoersTextView: TextView = view.findViewById(R.id.numOfGymGoersTextView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -29,5 +30,10 @@ class ItemAdapter(private val context: Context, private val dataset: List<Search
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
-        holder.textView.text =  context.resources.getString(item.numOfPeopleInGym)    }
+        Log.d("ay caramba", item.loggedTime +  item.loggedWeight)
+        holder.loggedTimeTextView.text = item.loggedTime
+        holder.loggedWeightTextView.text = item.loggedWeight
+        holder.numOfGymGoersTextView.text = item.numOfGymGoers.toString()
+
+    }
 }

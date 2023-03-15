@@ -30,10 +30,11 @@ import com.google.firebase.database.DatabaseError
 import kotlinx.coroutines.*
 import java.util.*
 
-data class LoggedData(
-    val numOfGymGoers: Int,
-    val loggedTime: String,
-    val loggedWeight: String
+
+data class LoggedDataWithoutKey(
+    val loggedTime: String = "",
+    val loggedWeight: String = "",
+    val numOfGymGoers: Int = 0
 )
 class MainFragment : Fragment() {
     private lateinit var viewModel: MainActivityViewModel
@@ -94,7 +95,7 @@ class MainFragment : Fragment() {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     // Get Post object and use the values to update the UI
                      post = dataSnapshot.getValue() as String
-                    binding.welcomeText.setText("Let's Crush This Workout, $post 🤓💪!")
+                    binding.welcomeText.setText("Let's Crush This Workout, $post 💪🏋️!")
 
                     Log.d(TAG, post.toString())
                     // ...
@@ -178,7 +179,7 @@ class MainFragment : Fragment() {
                 val formattedTime = "$loggedHour:$loggedMinute $loggedMeridian"
 
                 val userLoggedData = database.getReference("/${userId}/gymLogs/${formattedDate}")
-                userLoggedData.push().setValue(LoggedData(numOfPeopleInGym, formattedTime, loggedWeight))
+                userLoggedData.push().setValue(LoggedDataWithoutKey(formattedTime, loggedWeight,  numOfPeopleInGym.toInt()))
                 Toast.makeText(context, "Data logged", Toast.LENGTH_SHORT).show()
             }
         }
