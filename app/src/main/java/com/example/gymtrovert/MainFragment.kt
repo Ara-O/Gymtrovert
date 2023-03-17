@@ -40,7 +40,6 @@ class MainFragment : Fragment() {
     private lateinit var viewModel: MainActivityViewModel
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-    lateinit var googleSignInClient: GoogleSignInClient
 //    private lateinit var  authListener: AuthStateListener
     var userId = ""
 
@@ -71,7 +70,7 @@ class MainFragment : Fragment() {
         val view = binding.root
 
         var numOfPeopleInGym = 0
-//
+        var username = ""
         //View model
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
@@ -79,6 +78,8 @@ class MainFragment : Fragment() {
         val storedData = activity?.getSharedPreferences("sharedPreferences", MODE_PRIVATE)
         if (storedData != null) {
             userId = storedData.getString("id", "").toString()
+            username = storedData.getString("username", "").toString()
+            Log.d("username", username)
         }
 
         if(userId.isEmpty()){
@@ -86,32 +87,7 @@ class MainFragment : Fragment() {
             startActivity(i)
         }
 
-        // Launch a coroutine on the IO dispatcher to perform a background task
-        CoroutineScope(Dispatchers.IO).launch {
-            var post: String = ""
-            val postReference = Firebase.database.reference.child("/${userId}/username")
-            // Perform the background task here
-            val postListener = object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    // Get Post object and use the values to update the UI
-                     post = dataSnapshot.getValue() as String
-                    binding.welcomeText.setText("Let's Crush This Workout, $post 💪🏋️!")
-
-                    Log.d(TAG, post.toString())
-                    // ...
-                }
-
-                override fun onCancelled(databaseError: DatabaseError) {
-                    // Getting Post failed, log a message
-                    Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
-                }
-            }
-            postReference.addValueEventListener(postListener)
-            // Switch to the main thread to update the UI
-            withContext(Dispatchers.Main) {
-                // Update the UI with the result of the background task here
-            }
-        }
+        binding.welcomeText.setText("Let's Crush This Workout, $username 💪🏋️!")
 
 
         binding.increaseNumOfPeople.setOnClickListener {
@@ -152,13 +128,6 @@ class MainFragment : Fragment() {
         binding.hour.setText(hour.toString())
         binding.min.setText(minute.toString())
         binding.timePMorAM.setText(pmOrAm.toString())
-        val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(BuildConfig.FIREBASE_ID_TOKEN)
-            .requestEmail()
-            .build()
-
-        // Initialize sign in client
-        googleSignInClient = activity?.let { GoogleSignIn.getClient(it, googleSignInOptions) }!!
 
 
         val database = Firebase.database
@@ -184,25 +153,6 @@ class MainFragment : Fragment() {
             }
         }
 
-        binding.logOut.setOnClickListener {
-            Firebase.auth.signOut()
-            Auth.GoogleSignInApi.signOut(googleSignInClient.asGoogleApiClient());
-            context?.let { it1 ->
-                GoogleSignIn.getClient(
-                    it1,
-                    GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
-                ).signOut()
-            }
-
-            val edit = activity?.getSharedPreferences("sharedPreferences", MODE_PRIVATE)?.edit()
-            edit?.remove("id")
-            edit?.apply()
-
-
-            val i = Intent(context, Signup::class.java)
-            startActivity(i)
-//            finish()
-        }
 
         return view
     }

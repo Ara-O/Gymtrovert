@@ -8,11 +8,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gymtrovert.databinding.ActivityLoginBinding
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +32,8 @@ class Login : AppCompatActivity() {
         }
 
         val auth = Firebase.auth
+        database = Firebase.database.reference
+
 
         binding.loginButton.setOnClickListener {
             val email = binding.emailAddressInput.text
@@ -47,6 +52,13 @@ class Login : AppCompatActivity() {
                             firebasePref.putString("id", auth.currentUser?.uid.toString())
                             firebasePref.apply()
 
+                            //Get user's username and store in sharedpreferences
+                            database.child("/${auth.currentUser?.uid}").child("/username").get().addOnSuccessListener {
+                                firebasePref.putString("username", it.value.toString())
+                                firebasePref.apply()
+                            }.addOnFailureListener{
+                                Log.e("firebase", "Error getting data", it)
+                            }
                             val i = Intent(this, MainActivity::class.java)
                             startActivity(i)
                             finish()

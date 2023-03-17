@@ -93,6 +93,7 @@ class Signup : AppCompatActivity() {
                              val sharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
                              val firebasePref = sharedPreferences.edit()
                              firebasePref.putString("id", user?.uid.toString())
+                             firebasePref.putString("username", username.toString())
                              firebasePref.apply()
 
                              val i = Intent(this, MainActivity::class.java)
@@ -146,7 +147,6 @@ class Signup : AppCompatActivity() {
                                 .addOnCompleteListener(this) { task ->
                                     // Check condition
                                     if (task.isSuccessful) {
-
                                         //Save user's username
                                         val database = Firebase.database
                                         val userUsername = database.getReference("/${auth.currentUser?.uid}/username")
@@ -157,6 +157,7 @@ class Signup : AppCompatActivity() {
                                         val sharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
                                         val firebasePref = sharedPreferences.edit()
                                         firebasePref.putString("id", auth.currentUser?.uid.toString())
+                                        firebasePref.putString("username", username.toString())
                                         firebasePref.apply()
 
 
