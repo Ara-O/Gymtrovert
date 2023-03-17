@@ -39,6 +39,7 @@
         android:layout_width="70dp"
         android:layout_height="54dp"
         android:layout_marginLeft="10sp"
+        android:layout_marginRight="-5sp"
         app:layout_constraintBottom_toBottomOf="@+id/view4"
         app:layout_constraintStart_toEndOf="@+id/loggedWeightTextView"
         app:layout_constraintTop_toTopOf="@+id/view4"

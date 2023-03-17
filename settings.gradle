@@ -1,8 +1,9 @@
 pluginManagement {
     repositories {
         google()
-        mavenCentral()
+        mavenCentral{url 'https://jitpack.io'}
         gradlePluginPortal()
+
     }
 }
 dependencyResolutionManagement {
@@ -10,6 +11,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        mavenCentral{url 'https://jitpack.io'}
     }
 }
 rootProject.name = "Gymtrovert"

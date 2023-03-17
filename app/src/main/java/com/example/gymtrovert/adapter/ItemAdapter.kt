@@ -32,8 +32,8 @@ class ItemAdapter(private val context: Context, private val dataset: MutableList
         val item = dataset[position]
         Log.d("ay caramba", item.loggedTime +  item.loggedWeight)
         holder.loggedTimeTextView.text = item.loggedTime
-        holder.loggedWeightTextView.text = item.loggedWeight
-        holder.numOfGymGoersTextView.text = item.numOfGymGoers.toString()
+        holder.loggedWeightTextView.text = item.loggedWeight + " lbs"
+        holder.numOfGymGoersTextView.text = item.numOfGymGoers.toString() + " people"
 
     }
 }

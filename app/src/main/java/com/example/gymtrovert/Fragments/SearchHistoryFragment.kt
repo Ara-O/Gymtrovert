@@ -69,7 +69,7 @@ class SearchHistoryFragment : Fragment() {
 
                     for (it in it.children) {
                         Log.d("IT", it.value.toString())
-                        val data = LoggedData(it.getValue<LoggedData>()?.loggedWeight.toString(), it.getValue<LoggedData>()?.loggedTime.toString(), it.getValue<LoggedData>()?.numOfGymGoers.toString())
+                        val data = LoggedData(it.key.toString(), it.getValue<LoggedData>()?.loggedTime.toString(), it.getValue<LoggedData>()?.loggedWeight.toString(),  it.getValue<LoggedData>()?.numOfGymGoers!!)
                         myDataset.add(data)
                     }
                 val recyclerView = binding.recyclerView
@@ -80,24 +80,6 @@ class SearchHistoryFragment : Fragment() {
             }.addOnFailureListener{
                 Log.e("firebase", "Error getting data", it)
             }
-//            val postListener = object : ValueEventListener {
-//                override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                    myDataset.clear()
-//
-//                    for (it in dataSnapshot.children) {
-//                        Log.d("IT", it.value.toString())
-//                        val data = LoggedData(it.getValue<LoggedData>()?.loggedWeight.toString(), it.getValue<LoggedData>()?.loggedTime.toString(), it.getValue<LoggedData>()?.numOfGymGoers.toString())
-//                        myDataset.add(data)
-//                    }
-//
-//                }
-//
-//                override fun onCancelled(databaseError: DatabaseError) {
-//                    // Getting Post failed, log a message
-//                    Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
-//                }
-//            }
-//            postReference.addValueEventListener(postListener)
 
 
 
